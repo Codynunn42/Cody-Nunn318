@@ -18,8 +18,10 @@ pnpm list --filter sentinel
 pnpm --filter sentinel run smoke:billing
 ```
 
-Or via the root script alias:
+If your environment cannot run `pnpm` (for example, offline or restricted network), use the direct fallback:
 
 ```bash
-pnpm run smoke:billing
+pnpm run smoke:billing:direct
+# or
+bash ./packages/sentinel/scripts/smoke-billing.sh
 ```
