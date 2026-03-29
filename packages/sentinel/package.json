@@ -1,0 +1,8 @@
+{
+  "name": "sentinel",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "smoke:billing": "bash ./scripts/smoke-billing.sh"
+  }
+}
