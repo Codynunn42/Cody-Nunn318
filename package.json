@@ -1,0 +1,10 @@
+{
+  "name": "cody-nunn318",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.0.0",
+  "scripts": {
+    "smoke:billing": "pnpm --filter sentinel run smoke:billing",
+    "list:sentinel": "pnpm list --filter sentinel"
+  }
+}
