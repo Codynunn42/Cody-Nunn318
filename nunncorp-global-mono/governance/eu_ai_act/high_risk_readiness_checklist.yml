@@ -1,0 +1,49 @@
+eu_ai_act_high_risk_readiness:
+  reference_regulation: "EU 2024/1689"
+  key_dates:
+    chapter_i_ii_applicability: 2025-02-02
+    general_applicability: 2026-08-02
+  controls:
+    - id: EU-HR-001
+      requirement: Documented lifecycle risk management system
+      status: in_progress
+      evidence:
+        - governance/risk/risk_workflow.md
+        - governance/risk/risk_register.yml
+    - id: EU-HR-002
+      requirement: Automatic logging for traceability
+      status: in_progress
+      evidence:
+        - governance/controls/sentinel_policy_rules.yml
+        - governance/audit_pack/build_audit_pack.py
+    - id: EU-HR-003
+      requirement: Human oversight measures for high-risk workflows
+      status: in_progress
+      evidence:
+        - governance/controls/sentinel_policy_rules.yml
+        - governance/aims/roles.yml
+    - id: EU-HR-004
+      requirement: Technical documentation package for authorities/customers
+      status: planned
+      evidence:
+        - governance/aims/policy.yml
+        - governance/audit_pack/README.md
+    - id: EU-HR-005
+      requirement: Post-market monitoring plan and incident reporting workflow
+      status: in_progress
+      evidence:
+        - governance/audit_pack/sample_inputs/monitoring.json
+        - governance/audit_pack/sample_inputs/incidents.json
+readiness_gates:
+  - gate: pre_release
+    required_controls:
+      - EU-HR-001
+      - EU-HR-002
+      - EU-HR-003
+  - gate: eu_customer_enablement
+    required_controls:
+      - EU-HR-001
+      - EU-HR-002
+      - EU-HR-003
+      - EU-HR-004
+      - EU-HR-005
