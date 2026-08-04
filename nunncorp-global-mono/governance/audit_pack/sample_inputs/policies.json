@@ -1,0 +1,12 @@
+[
+  {
+    "policy_id": "POLICY-INFRA-001",
+    "policy_hash": "sha256:8d4a9c8ef0d2b2d8f6f5aef43fe17b6d6b2f3c71a9b2d54a90c9a9f84245b1ce",
+    "effective_at": "2026-04-07T00:00:00Z"
+  },
+  {
+    "policy_id": "POLICY-FIN-002",
+    "policy_hash": "sha256:ac7bdad21f62c490f4f08ca897454b5f91677418e6eb6bf2ee0f61f8054c3287",
+    "effective_at": "2026-04-07T00:00:00Z"
+  }
+]

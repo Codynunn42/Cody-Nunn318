@@ -1,0 +1,14 @@
+[
+  {
+    "run_id": "sentinel-run-001",
+    "action": "infrastructure_deploy",
+    "approver": "sec-eng-lead",
+    "approved_at": "2026-04-07T01:20:00Z"
+  },
+  {
+    "run_id": "sentinel-run-001",
+    "action": "infrastructure_deploy",
+    "approver": "sre-lead",
+    "approved_at": "2026-04-07T01:21:00Z"
+  }
+]

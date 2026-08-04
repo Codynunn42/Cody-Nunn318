@@ -1,0 +1,27 @@
+aims:
+  version: 1.0
+  owner: Chief AI Governance Officer
+  scope:
+    - Sentinel AI orchestration runtime
+    - Nunn Cloud multi-cloud control plane
+    - Supporting data, model, and automation pipelines
+  objectives:
+    - Maintain auditable AI operations across lifecycle phases
+    - Demonstrate effective governance and accountability
+    - Reduce safety, security, reliability, and compliance risk
+  governance_principles:
+    - auditability_by_design
+    - least_privilege_execution
+    - human_oversight_for_high_impact_actions
+    - continuous_monitoring_and_improvement
+  mandatory_artifacts:
+    - system_inventory
+    - model_and_agent_inventory
+    - control_catalog
+    - risk_register
+    - incident_log
+    - change_and_decommissioning_log
+  evidence_slos:
+    execution_receipt_completeness: ">= 99.5%"
+    policy_decision_traceability: "100% for high-impact actions"
+    audit_bundle_generation: "per release and per high-impact run"

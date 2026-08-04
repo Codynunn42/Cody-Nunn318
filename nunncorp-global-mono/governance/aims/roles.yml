@@ -1,0 +1,43 @@
+roles:
+  - role: Board Risk Committee
+    accountability:
+      - approve_ai_risk_tolerance
+      - review_quarterly_ai_risk_posture
+  - role: Chief AI Governance Officer
+    accountability:
+      - own_aims_program
+      - chair_management_review
+      - approve_high_risk_residual_risk_acceptance
+  - role: Sentinel Product Owner
+    accountability:
+      - ensure_control_implementation
+      - maintain_technical_documentation
+  - role: Security Engineering Lead
+    accountability:
+      - enforce_identity_and_access_controls
+      - run_control_testing
+  - role: Site Reliability Engineering Lead
+    accountability:
+      - maintain_monitoring_and_incident_response
+      - verify_post_release_operational_signals
+  - role: Internal Audit
+    accountability:
+      - perform_independent_control_effectiveness_reviews
+      - validate_audit_bundle_integrity
+raci:
+  high_impact_execution_policy_changes:
+    responsible: Sentinel Product Owner
+    accountable: Chief AI Governance Officer
+    consulted:
+      - Security Engineering Lead
+      - Site Reliability Engineering Lead
+    informed:
+      - Board Risk Committee
+  residual_risk_acceptance:
+    responsible: Sentinel Product Owner
+    accountable: Chief AI Governance Officer
+    consulted:
+      - Security Engineering Lead
+      - Legal and Compliance
+    informed:
+      - Internal Audit
