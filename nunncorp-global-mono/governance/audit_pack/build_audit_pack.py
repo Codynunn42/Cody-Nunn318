@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build an audit evidence bundle and checksum manifest for Sentinel AI + Nunn Cloud releases/runs."""
+"""Build a signed audit evidence bundle for Sentinel AI + Nunn Cloud releases/runs."""
 
 from __future__ import annotations
 

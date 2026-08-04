@@ -8,7 +8,7 @@ This package converts Sentinel AI + Nunn Cloud governance strategy into implemen
 - **Risk workflow (ISO/IEC 23894 style)**: repeatable hazard → treatment → residual risk acceptance flow.
 - **Control mapping backbone (NIST AI RMF + CSA AICM)**: control objectives mapped to enforceable execution policies.
 - **EU AI Act high-risk readiness kit**: checklist aligned to lifecycle risk management, logging, oversight, and post-market monitoring.
-- **Audit pack pipeline**: script that builds audit evidence bundles (plus a SHA-256 manifest) per release and high-impact run.
+- **Audit pack pipeline**: script that builds signed evidence bundles per release and high-impact run.
 
 > **Compliance note:** these files are compliance-engineering scaffolds, not legal advice.
 
