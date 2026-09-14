@@ -1,0 +1,65 @@
+policy_rules:
+  - id: POLICY-INFRA-001
+    name: High-impact infrastructure actions require two-person approval
+    applies_to:
+      capability: infrastructure_deploy
+      risk_classification: high_impact
+    conditions:
+      - approval_count >= 2
+      - approvers_distinct == true
+      - approver_roles includes "Security Engineering Lead"
+    enforcement:
+      on_fail: block_execution
+      on_pass: continue_with_receipt
+    evidence:
+      - approval_records
+      - command_payload_hash
+      - policy_evaluation_trace
+  - id: POLICY-FIN-002
+    name: Financial payouts require dual authorization and anomaly score check
+    applies_to:
+      capability: finance_payout
+      risk_classification: high_impact
+    conditions:
+      - dual_auth_complete == true
+      - anomaly_score < 0.65
+      - destination_account_trust_tier in ["verified", "managed"]
+    enforcement:
+      on_fail: escalate_manual_review
+      on_pass: continue_with_receipt
+    evidence:
+      - anomaly_model_version
+      - authorization_chain
+      - decision_latency_ms
+  - id: POLICY-ID-003
+    name: Privileged identity actions require JIT elevation and MFA proof
+    applies_to:
+      capability: identity_admin
+      risk_classification: high_impact
+    conditions:
+      - jit_token_valid == true
+      - mfa_verified == true
+      - separation_of_duties_conflict == false
+    enforcement:
+      on_fail: block_and_alert
+      on_pass: continue_with_receipt
+    evidence:
+      - jit_ticket_reference
+      - auth_context_id
+      - reviewer_attestation
+  - id: POLICY-MODEL-004
+    name: Model-assisted recommendations require human confirmation for critical decisions
+    applies_to:
+      capability: model_assisted_decisions
+      risk_classification: high_impact
+    conditions:
+      - human_reviewer_present == true
+      - recommendation_confidence >= 0.80
+      - source_data_lineage_complete == true
+    enforcement:
+      on_fail: require_additional_review
+      on_pass: continue_with_receipt
+    evidence:
+      - reviewer_identity
+      - model_card_id
+      - data_lineage_reference

@@ -1,0 +1,51 @@
+control_map:
+  - control_id: CTRL-EXEC-APPROVAL-001
+    objective: High-impact actions require explicit human approval before execution.
+    mappings:
+      nist_ai_rmf:
+        - GOVERN
+        - MANAGE
+      iso_42001:
+        - operational_control
+        - documented_information
+      iso_23894:
+        - risk_treatment
+      eu_ai_act:
+        - human_oversight
+        - traceability_logging
+      csa_aicm_domain:
+        - governance_risk_compliance
+        - operations
+  - control_id: CTRL-AUDIT-TRAIL-009
+    objective: Every command lifecycle event is cryptographically linked and queryable.
+    mappings:
+      nist_ai_rmf:
+        - GOVERN
+        - MEASURE
+      iso_42001:
+        - performance_evaluation
+        - evidence_retention
+      iso_23894:
+        - monitoring_review
+      eu_ai_act:
+        - automatic_logging
+        - technical_documentation
+      csa_aicm_domain:
+        - logging_monitoring
+        - assurance
+  - control_id: CTRL-HUMAN-OVERSIGHT-010
+    objective: Model-assisted recommendations cannot autonomously execute designated critical actions.
+    mappings:
+      nist_ai_rmf:
+        - MAP
+        - MANAGE
+      iso_42001:
+        - competence_awareness
+        - operational_planning
+      iso_23894:
+        - risk_acceptance
+      eu_ai_act:
+        - human_oversight
+      csa_aicm_domain:
+        - responsible_ai
+        - operations

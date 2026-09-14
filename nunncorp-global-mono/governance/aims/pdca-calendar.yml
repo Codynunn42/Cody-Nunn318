@@ -1,0 +1,31 @@
+pdca:
+  plan:
+    cadence: quarterly
+    activities:
+      - refresh_ai_context_and_regulatory_requirements
+      - update_control_objectives_and_success_metrics
+      - set_risk_treatment_priorities
+  do:
+    cadence: continuous
+    activities:
+      - execute_policy_as_code_controls
+      - collect_receipts_and_operational_logs
+      - train_and_validate_human_oversight_workflows
+  check:
+    cadence: monthly
+    activities:
+      - control_effectiveness_testing
+      - incident_trend_and_override_analysis
+      - high_risk_workflow_sampling
+  act:
+    cadence: quarterly
+    activities:
+      - management_review_and_corrective_actions
+      - update_policies_and_risk_acceptance_decisions
+      - decommission_or_harden_underperforming_capabilities
+management_review_agenda:
+  - ai_risk_dashboard
+  - residual_risk_exceptions
+  - incidents_and_root_causes
+  - audit_findings_and_remediation
+  - eu_ai_act_readiness_progress

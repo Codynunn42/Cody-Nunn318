@@ -1,0 +1,9 @@
+[
+  {
+    "incident_id": "INC-2026-0041",
+    "severity": "medium",
+    "category": "policy_override",
+    "opened_at": "2026-04-01T09:30:00Z",
+    "status": "resolved"
+  }
+]

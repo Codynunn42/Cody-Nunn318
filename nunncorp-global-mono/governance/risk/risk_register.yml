@@ -1,0 +1,88 @@
+risk_register:
+  - id: R-001
+    capability: infrastructure_deploy
+    description: Unauthorized or unsafe infrastructure mutation via orchestration commands
+    classification: high_impact
+    inherent_risk:
+      impact: 5
+      likelihood: 3
+      detectability: 2
+    controls:
+      - CTRL-EXEC-APPROVAL-001
+      - CTRL-IDENTITY-JIT-002
+      - CTRL-ROLLBACK-003
+    residual_risk:
+      score: medium
+      accepted_by: Chief AI Governance Officer
+      accepted_on: 2026-04-07
+    monitoring:
+      kpis:
+        - change_failure_rate
+        - rollback_success_rate
+      kris:
+        - unauthorized_execution_attempts
+  - id: R-002
+    capability: finance_payout
+    description: Incorrect or malicious payout instruction execution
+    classification: high_impact
+    inherent_risk:
+      impact: 5
+      likelihood: 3
+      detectability: 3
+    controls:
+      - CTRL-DUAL-AUTH-004
+      - CTRL-ANOMALY-DETECT-005
+      - CTRL-RUNBOOK-006
+    residual_risk:
+      score: medium
+      accepted_by: Chief AI Governance Officer
+      accepted_on: 2026-04-07
+    monitoring:
+      kpis:
+        - payout_accuracy_rate
+      kris:
+        - anomaly_alert_volume
+        - manual_override_rate
+  - id: R-003
+    capability: identity_admin
+    description: Privilege escalation or incorrect identity provisioning through AI-assisted actions
+    classification: high_impact
+    inherent_risk:
+      impact: 5
+      likelihood: 4
+      detectability: 2
+    controls:
+      - CTRL-PIM-JIT-007
+      - CTRL-SOD-008
+      - CTRL-AUDIT-TRAIL-009
+    residual_risk:
+      score: medium_high
+      accepted_by: Chief AI Governance Officer
+      accepted_on: 2026-04-07
+    monitoring:
+      kpis:
+        - privileged_action_review_sla
+      kris:
+        - failed_mfa_admin_attempts
+  - id: R-004
+    capability: model_assisted_decisions
+    description: Harmful or non-compliant recommendations used in operational decisioning
+    classification: high_impact
+    inherent_risk:
+      impact: 4
+      likelihood: 4
+      detectability: 3
+    controls:
+      - CTRL-HUMAN-OVERSIGHT-010
+      - CTRL-DATA-LINEAGE-011
+      - CTRL-MONITORING-012
+    residual_risk:
+      score: medium
+      accepted_by: Chief AI Governance Officer
+      accepted_on: 2026-04-07
+    monitoring:
+      kpis:
+        - recommendation_reversal_rate
+      kris:
+        - model_drift_alerts
+        - fairness_signal_degradation
