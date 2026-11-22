@@ -1,0 +1,95 @@
+{
+  "bundle_schema": "nunn.audit.pack/v1",
+  "generated_at": "2026-08-21T04:03:21.522469+00:00",
+  "release": "2026.08.20",
+  "run_id": "sentinel-run-208",
+  "summary": {
+    "approval_count": 2,
+    "incident_count": 1,
+    "override_count": 1,
+    "monitor_signal_count": 3
+  },
+  "evidence": {
+    "policies": [
+      {
+        "policy_id": "POLICY-INFRA-001",
+        "hash": "sha256:8d4a9c8ef0d2b2d8f6f5aef43fe17b6d6b2f3c71a9b2d54a90c9a9f84245b1ce",
+        "effective_at": "2026-04-07T00:00:00Z"
+      },
+      {
+        "policy_id": "POLICY-FIN-002",
+        "hash": "sha256:ac7bdad21f62c490f4f08ca897454b5f91677418e6eb6bf2ee0f61f8054c3287",
+        "effective_at": "2026-04-07T00:00:00Z"
+      }
+    ],
+    "approvals": [
+      {
+        "run_id": "sentinel-run-208",
+        "action": "infrastructure_deploy",
+        "approver": "sec-eng-lead",
+        "approved_at": "2026-08-19T21:20:00Z"
+      },
+      {
+        "run_id": "sentinel-run-208",
+        "action": "infrastructure_deploy",
+        "approver": "sre-lead",
+        "approved_at": "2026-08-19T21:21:00Z"
+      }
+    ],
+    "incidents": [
+      {
+        "incident_id": "INC-2026-0819",
+        "severity": "medium",
+        "category": "policy_override",
+        "policy_id": "POLICY-FIN-002",
+        "control_id": "CTRL-ANOMALY-DETECT-005",
+        "opened_at": "2026-08-19T13:20:00Z",
+        "closed_at": "2026-08-19T14:35:00Z",
+        "elapsed_minutes": 75,
+        "escalation_flag": false,
+        "status": "resolved"
+      }
+    ],
+    "monitoring": [
+      {
+        "metric": "sovereignty_window",
+        "window_start": "2026-08-12T00:00:00Z",
+        "window_end": "2026-08-19T00:00:00Z",
+        "intervals_observed": 7,
+        "intervals_passed": 7,
+        "intervals_failed": 0,
+        "status": "complete",
+        "observed_at": "2026-08-19T00:05:00Z"
+      },
+      {
+        "metric": "policy_decision_traceability",
+        "value": 1.0,
+        "window": "7d",
+        "status": "healthy",
+        "observed_at": "2026-08-19T23:50:00Z"
+      },
+      {
+        "metric": "execution_receipt_completeness",
+        "value": 0.998,
+        "window": "7d",
+        "status": "healthy",
+        "observed_at": "2026-08-19T23:50:00Z"
+      }
+    ],
+    "overrides": [
+      {
+        "override_id": "OVR-208",
+        "reason": "critical patch window",
+        "approved_by": "Chief AI Governance Officer",
+        "timestamp": "2026-08-19T20:00:00Z"
+      }
+    ],
+    "decommissioning": [
+      {
+        "artifact": "legacy-finance-agent-v0",
+        "change_ticket": "CHG-7781",
+        "decommissioned_at": "2026-03-20T16:30:00Z"
+      }
+    ]
+  }
+}
