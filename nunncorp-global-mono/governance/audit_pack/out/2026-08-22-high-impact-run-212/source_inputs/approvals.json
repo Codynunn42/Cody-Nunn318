@@ -1,0 +1,38 @@
+[
+  {
+    "run_id": "sentinel-run-208",
+    "action": "infrastructure_deploy",
+    "approver": "sec-eng-lead",
+    "approved_at": "2026-08-19T21:20:00Z"
+  },
+  {
+    "run_id": "sentinel-run-208",
+    "action": "infrastructure_deploy",
+    "approver": "sre-lead",
+    "approved_at": "2026-08-19T21:21:00Z"
+  },
+  {
+    "run_id": "sentinel-run-209",
+    "action": "d3_memory_independence_conditional_state",
+    "approver": "chief-ai-governance-officer",
+    "approved_at": "2026-08-20T19:10:00Z"
+  },
+  {
+    "run_id": "sentinel-run-209",
+    "action": "d4_ecosystem_independence_conditional_state",
+    "approver": "chief-ai-governance-officer",
+    "approved_at": "2026-08-20T19:12:00Z"
+  },
+  {
+    "run_id": "sentinel-run-210",
+    "action": "evidence_refresh_cycle",
+    "approver": "sec-eng-lead",
+    "approved_at": "2026-08-21T10:05:00Z"
+  },
+  {
+    "run_id": "sentinel-run-210",
+    "action": "evidence_refresh_cycle",
+    "approver": "sre-lead",
+    "approved_at": "2026-08-21T10:06:00Z"
+  }
+]

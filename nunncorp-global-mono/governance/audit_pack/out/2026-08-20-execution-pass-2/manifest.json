@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-08-21T04:05:50.116559+00:00",
+  "inputs": {
+    "policies": "5f69a1aa25b46677d2b6ae7cd54875f78536a295d03bb1dcfd0e2953f00dbee4",
+    "approvals": "3e8cc7d62f12b67d69d1f16524a0c0a0bb79243d918b7b5ddca9e3f90153efc2",
+    "incidents": "783bd83787433508e8df5157f5263c009e262be10da965601cb5b5f4776f1ed9",
+    "monitoring": "b920277789cdf906d9589e2f2d8a37e121b0c4fac39f54058d0237cfbda3bcf7",
+    "overrides": "58ef07fba6dbdc02760fe9c8ad333c369e3d6d4e37d431b005bb73a1552ea719",
+    "decommissioning": "cbc077dd54ee29ea90442650535c3076e16e02343209182fc819ec123c63b7b0"
+  },
+  "outputs": {
+    "audit_bundle.json": "e0b166d030f9a41a5a901fda4efc2dedcaed2bbb70f9fcae26a7a085e23565b4"
+  },
+  "source_inputs": {
+    "directory": "source_inputs",
+    "preserved": true,
+    "reconstructed_from": "audit bundle evidence plus exact historical Git blobs"
+  }
+}

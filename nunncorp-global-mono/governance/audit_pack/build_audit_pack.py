@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import shutil
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -43,8 +44,21 @@ def ensure_input_files(input_dir: Path) -> dict[str, Path]:
     return files
 
 
-def build_bundle(release: str, run_id: str, files: dict[str, Path]) -> dict[str, Any]:
+def build_bundle(
+    release: str,
+    run_id: str,
+    files: dict[str, Path],
+    require_run_approval: bool = False,
+) -> dict[str, Any]:
     loaded = {key: load_json(path) for key, path in files.items()}
+    approvals_for_run = [
+        item for item in loaded["approvals"] if item.get("run_id") == run_id
+    ]
+    if require_run_approval and not approvals_for_run:
+        raise ValueError(
+            f"High-impact run {run_id} has no approval linked by run_id"
+        )
+
     policy_hashes = [
         {
             "policy_id": item["policy_id"],
@@ -61,9 +75,20 @@ def build_bundle(release: str, run_id: str, files: dict[str, Path]) -> dict[str,
         "run_id": run_id,
         "summary": {
             "approval_count": len(loaded["approvals"]),
+            "approval_count_for_run": len(approvals_for_run),
             "incident_count": len(loaded["incidents"]),
             "override_count": len(loaded["overrides"]),
             "monitor_signal_count": len(loaded["monitoring"]),
+        },
+        "approval_linkage": {
+            "run_id": run_id,
+            "linked_approval_count": len(approvals_for_run),
+            "status": "LINKED" if approvals_for_run else "MISSING",
+            "authorization_claim": (
+                "approval link present"
+                if approvals_for_run
+                else "no run-linked approval evidence"
+            ),
         },
         "evidence": {
             "policies": policy_hashes,
@@ -78,6 +103,10 @@ def build_bundle(release: str, run_id: str, files: dict[str, Path]) -> dict[str,
 
 def write_outputs(output_dir: Path, bundle: dict[str, Any], files: dict[str, Path]) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
+    source_dir = output_dir / "source_inputs"
+    source_dir.mkdir(parents=True, exist_ok=True)
+    for path in files.values():
+        shutil.copyfile(path, source_dir / path.name)
 
     bundle_path = output_dir / "audit_bundle.json"
     with bundle_path.open("w", encoding="utf-8") as handle:
@@ -88,6 +117,10 @@ def write_outputs(output_dir: Path, bundle: dict[str, Any], files: dict[str, Pat
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "inputs": {key: sha256_file(path) for key, path in files.items()},
         "outputs": {"audit_bundle.json": sha256_file(bundle_path)},
+        "source_inputs": {
+            "directory": "source_inputs",
+            "preserved": True,
+        },
     }
 
     manifest_path = output_dir / "manifest.json"
@@ -102,11 +135,21 @@ def main() -> None:
     parser.add_argument("--run-id", required=True, help="High-impact run identifier")
     parser.add_argument("--input-dir", required=True, type=Path, help="Directory containing required JSON evidence files")
     parser.add_argument("--output-dir", required=True, type=Path, help="Directory to write bundle and manifest")
+    parser.add_argument(
+        "--require-run-approval",
+        action="store_true",
+        help="Require at least one approval whose run_id exactly matches the bundle run_id",
+    )
 
     args = parser.parse_args()
 
     files = ensure_input_files(args.input_dir)
-    bundle = build_bundle(args.release, args.run_id, files)
+    bundle = build_bundle(
+        args.release,
+        args.run_id,
+        files,
+        require_run_approval=args.require_run_approval,
+    )
     write_outputs(args.output_dir, bundle, files)
 
 

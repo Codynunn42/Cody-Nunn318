@@ -1,14 +1,26 @@
 [
   {
+    "metric": "sovereignty_window",
+    "window_start": "2026-08-14T00:00:00Z",
+    "window_end": "2026-08-21T00:00:00Z",
+    "intervals_observed": 7,
+    "intervals_passed": 7,
+    "intervals_failed": 0,
+    "status": "complete",
+    "observed_at": "2026-08-21T00:05:00Z"
+  },
+  {
     "metric": "policy_decision_traceability",
     "value": 1.0,
     "window": "7d",
-    "status": "healthy"
+    "status": "healthy",
+    "observed_at": "2026-08-21T10:10:00Z"
   },
   {
     "metric": "execution_receipt_completeness",
     "value": 0.998,
     "window": "7d",
-    "status": "healthy"
+    "status": "healthy",
+    "observed_at": "2026-08-21T10:10:00Z"
   }
 ]

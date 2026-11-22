@@ -1,0 +1,14 @@
+[
+  {
+    "incident_id": "INC-2026-0821",
+    "severity": "medium",
+    "category": "policy_override",
+    "policy_id": "POLICY-FIN-002",
+    "control_id": "CTRL-ANOMALY-DETECT-005",
+    "opened_at": "2026-08-21T09:15:00Z",
+    "closed_at": "2026-08-21T10:00:00Z",
+    "elapsed_minutes": 45,
+    "escalation_flag": false,
+    "status": "resolved"
+  }
+]

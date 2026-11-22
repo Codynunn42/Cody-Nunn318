@@ -1,0 +1,127 @@
+{
+  "bundle_schema": "nunn.audit.pack/v1",
+  "generated_at": "2026-08-22T18:21:34.855701+00:00",
+  "release": "2026.08.22",
+  "run_id": "sentinel-run-212",
+  "summary": {
+    "approval_count": 6,
+    "incident_count": 1,
+    "override_count": 1,
+    "monitor_signal_count": 3,
+    "approval_count_for_run": 0
+  },
+  "evidence": {
+    "policies": [
+      {
+        "policy_id": "POLICY-INFRA-001",
+        "hash": "sha256:8d4a9c8ef0d2b2d8f6f5aef43fe17b6d6b2f3c71a9b2d54a90c9a9f84245b1ce",
+        "effective_at": "2026-04-07T00:00:00Z"
+      },
+      {
+        "policy_id": "POLICY-FIN-002",
+        "hash": "sha256:ac7bdad21f62c490f4f08ca897454b5f91677418e6eb6bf2ee0f61f8054c3287",
+        "effective_at": "2026-04-07T00:00:00Z"
+      }
+    ],
+    "approvals": [
+      {
+        "run_id": "sentinel-run-208",
+        "action": "infrastructure_deploy",
+        "approver": "sec-eng-lead",
+        "approved_at": "2026-08-19T21:20:00Z"
+      },
+      {
+        "run_id": "sentinel-run-208",
+        "action": "infrastructure_deploy",
+        "approver": "sre-lead",
+        "approved_at": "2026-08-19T21:21:00Z"
+      },
+      {
+        "run_id": "sentinel-run-209",
+        "action": "d3_memory_independence_conditional_state",
+        "approver": "chief-ai-governance-officer",
+        "approved_at": "2026-08-20T19:10:00Z"
+      },
+      {
+        "run_id": "sentinel-run-209",
+        "action": "d4_ecosystem_independence_conditional_state",
+        "approver": "chief-ai-governance-officer",
+        "approved_at": "2026-08-20T19:12:00Z"
+      },
+      {
+        "run_id": "sentinel-run-210",
+        "action": "evidence_refresh_cycle",
+        "approver": "sec-eng-lead",
+        "approved_at": "2026-08-21T10:05:00Z"
+      },
+      {
+        "run_id": "sentinel-run-210",
+        "action": "evidence_refresh_cycle",
+        "approver": "sre-lead",
+        "approved_at": "2026-08-21T10:06:00Z"
+      }
+    ],
+    "incidents": [
+      {
+        "incident_id": "INC-2026-0821",
+        "severity": "medium",
+        "category": "policy_override",
+        "policy_id": "POLICY-FIN-002",
+        "control_id": "CTRL-ANOMALY-DETECT-005",
+        "opened_at": "2026-08-21T09:15:00Z",
+        "closed_at": "2026-08-21T10:00:00Z",
+        "elapsed_minutes": 45,
+        "escalation_flag": false,
+        "status": "resolved"
+      }
+    ],
+    "monitoring": [
+      {
+        "metric": "sovereignty_window",
+        "window_start": "2026-08-14T00:00:00Z",
+        "window_end": "2026-08-21T00:00:00Z",
+        "intervals_observed": 7,
+        "intervals_passed": 7,
+        "intervals_failed": 0,
+        "status": "complete",
+        "observed_at": "2026-08-21T00:05:00Z"
+      },
+      {
+        "metric": "policy_decision_traceability",
+        "value": 1,
+        "window": "7d",
+        "status": "healthy",
+        "observed_at": "2026-08-21T10:10:00Z"
+      },
+      {
+        "metric": "execution_receipt_completeness",
+        "value": 0.998,
+        "window": "7d",
+        "status": "healthy",
+        "observed_at": "2026-08-21T10:10:00Z"
+      }
+    ],
+    "overrides": [
+      {
+        "override_id": "OVR-210",
+        "reason": "critical patch window",
+        "approved_by": "Chief AI Governance Officer",
+        "timestamp": "2026-08-21T10:08:00Z"
+      }
+    ],
+    "decommissioning": [
+      {
+        "artifact": "legacy-finance-agent-v0",
+        "change_ticket": "CHG-7781",
+        "decommissioned_at": "2026-03-20T16:30:00Z",
+        "reviewed_at": "2026-08-21T10:12:30Z"
+      }
+    ]
+  },
+  "approval_linkage": {
+    "run_id": "sentinel-run-212",
+    "linked_approval_count": 0,
+    "status": "MISSING_HISTORICAL_EXCEPTION",
+    "authorization_claim": "no run-linked approval evidence; this bundle must not be treated as high-impact approval"
+  }
+}
