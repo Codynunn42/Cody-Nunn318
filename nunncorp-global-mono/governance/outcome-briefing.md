@@ -1,5 +1,8 @@
 # Outcome Briefing
 
+> Historical evidence review only. This briefing does not authorize runtime
+> release; the current disposition remains HOLD pending independent review.
+
 ## Purpose
 This briefing captures the outcome of the current SSAI runtime validation and governance review cycle. It is intended for executive and board-level distribution without requiring detailed engineering context.
 
@@ -16,7 +19,7 @@ Operational evidence reviewed in this cycle shows:
 ## Governance interpretation
 The outcome supports the following conclusion:
 - the operating path is consistent with the approved AI governance model
-- the current runtime and evidence posture is acceptable for continued operation
+- the historical runtime and evidence observations are suitable for continued review, not release approval
 - no broad remediation is required unless a support incident, override, or control exception is reported
 
 ## Risk status

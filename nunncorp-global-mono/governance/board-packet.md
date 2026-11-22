@@ -1,12 +1,17 @@
 # Board Packet: AI Governance and SSAI Operational Outcome
 
-## 1. Executive summary
-This packet summarizes the current governance posture, support triage outcomes, and the operational state of the SSAI runtime. The current evidence supports continued operation under the approved governance model with a maintained rollback path and a validated public endpoint.
+> **Current disposition: HOLD.** This packet preserves an August 2026
+> historical review. It records observed evidence and proposed governance
+> language only; it does not approve runtime operation, release, deployment,
+> or sovereign-runtime designation.
 
-The current review confirms:
-- the supported runtime contract is returning the expected observed-health schema
-- the public API endpoint is reachable and serving the expected output
-- the evidence-store and policy checks remain in alignment with the governance baseline
+## 1. Executive summary
+This packet summarizes the historical governance posture, support triage outcomes, and observed state of the SSAI runtime candidate. The evidence supported technical review of a maintained rollback path and a responding public endpoint, but it did not establish release approval or a digest-bound sovereign-runtime designation.
+
+The historical review recorded:
+- the candidate runtime contract returned the expected observed-health schema
+- the public API endpoint was reachable during the reviewed observation
+- the evidence-store and policy checks were aligned with the governance baseline at that time
 - the rollback path remains available while the live route is under review
 
 ## 2. Governance basis
@@ -23,8 +28,8 @@ This brief aligns to the repository’s governance baseline:
 - review cadence remains aligned to quarterly management review and monthly control testing
 
 ### Do
-- SSAI runtime validation executed and confirmed
-- public health checks exercised against the live endpoint
+- SSAI runtime validation evidence was collected
+- historical public health checks were exercised against the endpoint
 - support triage process updated and retained in the governance package
 
 ### Check
@@ -47,16 +52,17 @@ Evidence:
 - same contract shape was observed on the public endpoint
 
 Outcome:
-- runtime behavior accepted as valid for the current target path
+- runtime behavior was recorded as technically valid for the historical target path
+- this observation did not approve the runtime or its sovereign identity
 
 ### 4.2 Evidence-store validation
 Status: Completed
 Evidence:
 - persistent evidence-store checks validated read/write behavior
-- health check validated as non-mutating and safe for operational polling
+- after remediation, health checks read and verify existing evidence without changing records or the latest pointer
 
 Outcome:
-- evidence path considered stable and production-appropriate for current runtime review
+- evidence behavior is suitable for independent technical review, not proof of production or release approval
 
 ### 4.3 Public endpoint validation
 Status: Completed
@@ -65,7 +71,7 @@ Evidence:
 - public output matched the expected observed-health structure
 
 Outcome:
-- route accepted as live and operational for the current review cycle
+- route observations were accepted only as historical evidence for the review cycle
 
 ### 4.4 Governance packet creation
 Status: Completed
@@ -76,7 +82,7 @@ Evidence:
 - outcome briefing created
 
 Outcome:
-- governance materials ready for distribution and sign-off
+- governance materials were prepared for independent review; readiness and sign-off remained gated
 
 ### 4.5 Rollback readiness
 Status: Completed
@@ -121,11 +127,12 @@ This checklist defines the minimum readiness gate for the current board packet.
 - [ ] Board recommendation is limited to the current evidence and does not rely on unsupported assumptions.
 
 ## 7. Recommended board decision
-Approve continued operation under the current governance posture, with the following conditions:
-- keep monitored oversight of the active public route
-- retain rollback path until the next formal review
-- escalate only if a control breach or override occurs outside policy thresholds
-- retain the canary-provenance exception as an open evidence item until direct proof is available
+Maintain **HOLD** on sovereign-runtime acceptance and release. Independent reviewers should:
+- verify the serving image identity and immutable registry provenance
+- verify ingress, trust-proxy, authentication, and Sentinel command-envelope bindings
+- retain the rollback path
+- resolve or formally disposition the canary-provenance exception
+- record any future runtime decision through a separate digest-bound approval
 
 ## 8. Final recommendation
-The current code and policy posture is ready for governance sign-off. No further coding work is required for the current scope. Operational oversight should continue under the normal monthly and quarterly cadence, with the canary provenance exception retained as a documented evidence gap rather than a failed control result.
+This historical packet is ready for evidence review, not governance sign-off of the live runtime. The code and policy posture does not authorize continued operation, release, deployment, or sovereign-runtime designation. HOLD remains in effect until the required evidence is independently reviewed and the designated authority records a separate decision.

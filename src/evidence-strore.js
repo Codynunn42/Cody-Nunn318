@@ -58,9 +58,7 @@ function write(record) {
   };
 }
 
-function latest() {
-  ensureReady();
-
+function readLatest() {
   if (!fs.existsSync(latestFile)) {
     return null;
   }
@@ -89,30 +87,33 @@ function latest() {
   };
 }
 
+function latest() {
+  ensureReady();
+  return readLatest();
+}
+
 function health() {
   try {
-    ensureReady();
+    if (!fs.existsSync(evidenceDir)) {
+      return {
+        status: "fail",
+        source: "persistent_evidence_store",
+        error: "evidence directory missing"
+      };
+    }
 
-    const probe = {
-      request_id: crypto.randomUUID(),
-      timestamp: new Date().toISOString(),
-      type: "evidence-health-probe",
-      outcome: "pass"
-    };
-
-    const saved = write(probe);
-    const readBack = latest();
+    const readBack = readLatest();
 
     return {
       status:
         readBack &&
-        readBack.verified &&
-        saved.hash === readBack.hash
+        readBack.verified
           ? "pass"
           : "fail",
       source: "persistent_evidence_store",
-      reference: saved.reference,
-      hash: saved.hash
+      reference: readBack ? readBack.reference : null,
+      hash: readBack ? readBack.hash : null,
+      error: readBack ? null : "latest evidence missing"
     };
   } catch (error) {
     return {

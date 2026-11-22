@@ -3,7 +3,7 @@
 ## Status summary
 Local SSAI runtime remains operational; Sentinel dependency is intentionally offline during canary testing
 
-- Local SentinelOS/SSAI runtime remains live and operational without a required Sentinel runtime dependency.
+- Historical observations recorded the local SentinelOS/SSAI runtime as live without a required Sentinel runtime dependency; that record is not a current operational or sovereign-runtime approval, and the disposition remains HOLD.
 - Sentinel AI containers in Docker are currently shut down for canary testing, while SIEM remains active.
 - Docking is an explicit, invoked state transition and should not be treated as an ambient runtime dependency.
 - D1 remains evidence-gated until the shutdown/canary and dock/undock records are preserved and reconciled with the monitoring evidence.

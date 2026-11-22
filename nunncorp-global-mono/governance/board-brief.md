@@ -10,7 +10,7 @@ Board Risk Committee
 This brief summarizes the AI governance posture, current control effectiveness, support triage outcomes, and residual risk status for the Sentinel operating model.
 
 ## Executive summary
-The organization’s AI governance foundation remains operational and aligned to the approved management system model. The current evidence supports continued operation of the active SSAI API path while preserving a rollback option and retaining oversight over the most sensitive high-impact capabilities.
+The organization’s AI governance foundation remains operational and aligned to the approved management system model. Historical SSAI observations preserve a rollback option and support continued technical review, but do not authorize continued operation, release, or sovereign-runtime designation. The current disposition remains HOLD.
 
 ## Morning executive block (2026-08-27)
 ### Status
