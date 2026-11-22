@@ -9,6 +9,7 @@ Fast execution order for August month-end governance closeout.
 ## Preconditions
 - Sample inputs updated for final August cycle under governance/audit_pack/sample_inputs.
 - No unresolved D1 integrity regressions.
+- Canary provenance resolved or formally dispositioned by the designated owner and reviewer.
 
 ## Command sequence
 1. Build final August audit pack:
@@ -27,7 +28,16 @@ python3 nunncorp-global-mono/governance/audit_pack/build_audit_pack.py \
 ls -la nunncorp-global-mono/governance/audit_pack/out/2026-08-31-month-end
 ```
 
-3. Capture manifest path for closeout:
+3. Verify preserved inputs and outputs against the manifest:
+
+```bash
+python3 nunncorp-global-mono/governance/audit_pack/verify_audit_manifest.py \
+  nunncorp-global-mono/governance/audit_pack/out/2026-08-31-month-end/manifest.json
+```
+
+The command must report PASS. A missing file or checksum mismatch blocks closeout.
+
+4. Capture manifest path for closeout:
 
 ```bash
 cat nunncorp-global-mono/governance/audit_pack/out/2026-08-31-month-end/manifest.json
@@ -53,8 +63,14 @@ cat nunncorp-global-mono/governance/audit_pack/out/2026-08-31-month-end/manifest
 Escalate immediately if either condition is true:
 1. Any ATP >= 100
 2. Any D1 integrity gate regression
+3. Unauthorized or unapproved high-impact execution
+4. Identity or MFA validation failure
+5. Anomaly or payout override outside policy
+6. Public API contract deviation
+7. Repeated incident pattern or unresolved required-evidence gate
 
 ## Completion criteria
 - Manifest verified and recorded.
+- Canary provenance resolved or formally dispositioned.
 - Month-end template fully filled and signed off.
 - Board update published with authoritative references.

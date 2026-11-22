@@ -7,7 +7,8 @@
     "approval_count": 6,
     "incident_count": 1,
     "override_count": 1,
-    "monitor_signal_count": 3
+    "monitor_signal_count": 3,
+    "approval_count_for_run": 0
   },
   "evidence": {
     "policies": [
@@ -87,7 +88,7 @@
       },
       {
         "metric": "policy_decision_traceability",
-        "value": 1.0,
+        "value": 1,
         "window": "7d",
         "status": "healthy",
         "observed_at": "2026-08-21T10:10:00Z"
@@ -116,5 +117,11 @@
         "reviewed_at": "2026-08-21T10:12:30Z"
       }
     ]
+  },
+  "approval_linkage": {
+    "run_id": "sentinel-run-211",
+    "linked_approval_count": 0,
+    "status": "MISSING_HISTORICAL_EXCEPTION",
+    "authorization_claim": "no run-linked approval evidence; this bundle must not be treated as high-impact approval"
   }
 }

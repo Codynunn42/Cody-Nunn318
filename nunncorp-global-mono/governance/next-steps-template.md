@@ -4,11 +4,11 @@
 
 | Deliverable | Status | Owner | Approver | Due date | Immediate next step |
 | --- | --- | --- | --- | --- | --- |
-| D1 | PASS (2026-08-20 cycle) | User / Acting Owner | Executive Desk / Human approval retained | 2026-08-28 | Preserve reconciliation artifacts and carry forward 7-day freshness checks. |
-| D2 | PASS (evidence baselined) | Security Engineering Lead | Chief AI Governance Officer | 2026-09-05 | Refresh identity verification evidence for the next cadence checkpoint. |
-| D3 | PASS (conditional approval recorded) | Sentinel Product Owner | Chief AI Governance Officer | 2026-09-05 | Maintain conditional approval trail and collect implementation evidence if changed. |
-| D4 | PASS (conditional approval recorded) | Site Reliability Engineering Lead | Chief AI Governance Officer | 2026-09-05 | Maintain trust-boundary evidence and rerun dependency verification on change. |
-| D5 | READY FOR NEXT CYCLE | Chief AI Governance Officer | Board Risk Committee | 2026-09-18 | Set next cadence date, owners, artifacts, and handoff responsibilities. |
+| D1 | IN PROGRESS | User / Acting Owner | Executive Desk / Human approval retained | To be confirmed | Reconcile monitoring timestamps and failed manifest verification. |
+| D2 | UNVERIFIED | Security Engineering Lead | Chief AI Governance Officer | To be confirmed | Document authoritative identity dependency evidence and runtime verification. |
+| D3 | UNVERIFIED | Sentinel Product Owner | Chief AI Governance Officer | To be confirmed | Confirm memory-store decision, waiver, or implementation evidence. |
+| D4 | UNVERIFIED | Site Reliability Engineering Lead | Chief AI Governance Officer | To be confirmed | Define external trust boundary and verification method. |
+| D5 | READY TO PREPARE | Chief AI Governance Officer | Board Risk Committee | To be confirmed | Set cadence date, owners, artifacts, and handoff responsibilities. |
 
 ## Handoff gate
 
@@ -33,4 +33,4 @@ For processed cycle outcomes and final pass/fail decisions, use the dated closur
 2. Refresh sample evidence inputs to keep operational freshness at <= 7 days.
 3. Re-run audit pack generation for the next high-impact run and store manifest output.
 4. Recompute ATP, MTTR, and escalation rate and append results to the next closure report.
-5. Escalate only if ATP enters Sev-1 threshold or if any D1 integrity gate regresses.
+5. Escalate on ATP >= 100, a D1 integrity regression, unauthorized high-impact execution, identity/MFA failure, an out-of-policy anomaly or payout override, a public API contract deviation, or a repeated incident pattern.

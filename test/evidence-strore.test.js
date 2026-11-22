@@ -54,3 +54,50 @@ test("health fails without creating a missing evidence store", (t) => {
   assert.equal(result.error, "evidence directory missing");
   assert.equal(fs.existsSync(root), false);
 });
+
+test("write rejects path-like request identifiers", (t) => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "ssai-evidence-test-"));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+
+  const store = loadStore(root);
+
+  assert.throws(
+    () => store.write({ request_id: "../../outside", outcome: "unsafe" }),
+    /invalid request_id/
+  );
+  assert.throws(
+    () => store.write({ request_id: "", outcome: "unsafe" }),
+    /invalid request_id/
+  );
+  assert.deepEqual(fs.readdirSync(path.join(root, "evidence")), []);
+});
+
+test("write rejects replacement of an existing evidence record", (t) => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "ssai-evidence-test-"));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+
+  const store = loadStore(root);
+  store.write({
+    request_id: "immutable-record",
+    outcome: "original"
+  });
+  const original = fs.readFileSync(
+    path.join(root, "evidence", "immutable-record.json"),
+    "utf8"
+  );
+
+  assert.throws(
+    () => store.write({
+      request_id: "immutable-record",
+      outcome: "replacement"
+    }),
+    /EEXIST/
+  );
+  assert.equal(
+    fs.readFileSync(
+      path.join(root, "evidence", "immutable-record.json"),
+      "utf8"
+    ),
+    original
+  );
+});

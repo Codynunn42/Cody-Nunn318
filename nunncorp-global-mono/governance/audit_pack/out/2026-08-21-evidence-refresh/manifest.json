@@ -9,6 +9,11 @@
     "decommissioning": "4ed62da9f07b2b9d4795da55721fadd690d122cc30c48d894888225f1848cd07"
   },
   "outputs": {
-    "audit_bundle.json": "780b6917f0fba58ff5ef54e9255b7d58707cbb85abdee7fe7616e23966c786e9"
+    "audit_bundle.json": "5d4f66e3ad976be8fc624e4c1cba5ef95e2aad380ebdfd31e56ed82c7f0bc412"
+  },
+  "source_inputs": {
+    "directory": "source_inputs",
+    "preserved": true,
+    "reconstructed_from": "audit bundle evidence plus exact historical Git blobs"
   }
 }

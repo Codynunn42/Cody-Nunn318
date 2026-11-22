@@ -48,21 +48,42 @@ def parse_executive_due_dates(path: Path) -> dict[str, str]:
     return values
 
 
-def build_assignment_rows(roles: list[str], pdca: dict[str, str], due_dates: dict[str, str]) -> list[dict[str, str]]:
-    scheduled_due_defaults = {
-        "D1": "2026-08-28",
-        "D2": "2026-09-05",
-        "D3": "2026-09-05",
-        "D4": "2026-09-05",
-        "D5": "2026-09-18",
-    }
+def parse_active_next_steps(path: Path) -> dict[str, dict[str, str]]:
+    text = read_text(path)
+    section = re.search(
+        r"^## Active next steps\s*$([\s\S]*?)(?=^##\s|\Z)",
+        text,
+        re.MULTILINE,
+    )
+    if not section:
+        return {}
+
+    values = {}
+    for match in re.finditer(
+        r"^\|\s*(D[1-5])\s*\|\s*([^|]+?)\s*\|(?:\s*[^|]*\|\s*){3}([^|]+?)\s*\|",
+        section.group(1),
+        re.MULTILINE,
+    ):
+        values[match.group(1)] = {
+            "status": match.group(2).strip(),
+            "action": match.group(3).strip(),
+        }
+    return values
+
+
+def build_assignment_rows(
+    roles: list[str],
+    pdca: dict[str, str],
+    due_dates: dict[str, str],
+    next_steps: dict[str, dict[str, str]],
+) -> list[dict[str, str]]:
 
     assignments = {
-        "D1": {"owner": "User / Acting Owner", "approver": "Executive Desk / Human approval retained", "due": due_dates.get("D1", {}).get("due", scheduled_due_defaults["D1"])},
-        "D2": {"owner": "Security Engineering Lead", "approver": "Chief AI Governance Officer", "due": due_dates.get("D2", {}).get("due", scheduled_due_defaults["D2"])},
-        "D3": {"owner": "Sentinel Product Owner", "approver": "Chief AI Governance Officer", "due": due_dates.get("D3", {}).get("due", scheduled_due_defaults["D3"])},
-        "D4": {"owner": "Site Reliability Engineering Lead", "approver": "Chief AI Governance Officer", "due": due_dates.get("D4", {}).get("due", scheduled_due_defaults["D4"])},
-        "D5": {"owner": "Chief AI Governance Officer", "approver": "Board Risk Committee", "due": due_dates.get("D5", {}).get("due", scheduled_due_defaults["D5"])},
+        "D1": {"owner": "User / Acting Owner", "approver": "Executive Desk / Human approval retained"},
+        "D2": {"owner": "Security Engineering Lead", "approver": "Chief AI Governance Officer"},
+        "D3": {"owner": "Sentinel Product Owner", "approver": "Chief AI Governance Officer"},
+        "D4": {"owner": "Site Reliability Engineering Lead", "approver": "Chief AI Governance Officer"},
+        "D5": {"owner": "Chief AI Governance Officer", "approver": "Board Risk Committee"},
     }
 
     for key, value in assignments.items():
@@ -70,12 +91,11 @@ def build_assignment_rows(roles: list[str], pdca: dict[str, str], due_dates: dic
         src_approver = due_dates.get(key, {}).get("approver", "To be confirmed")
         value["owner"] = src_owner if src_owner not in {"To be confirmed", ""} else value["owner"]
         value["approver"] = src_approver if src_approver not in {"To be confirmed", ""} else value["approver"]
-        src_due = due_dates.get(key, {}).get("due", "To be confirmed")
-        value["due"] = src_due if src_due not in {"To be confirmed", "", "TBD"} else scheduled_due_defaults.get(key, value["due"])
+        value["due"] = due_dates.get(key, {}).get("due") or "To be confirmed"
 
         # Guardrail: D1 requires explicit separation of duties at template level.
         if key == "D1" and value["owner"] == value["approver"]:
-            value["approver"] = "Executive Desk / Human approval retained"
+            value["approver"] = "To be confirmed"
 
         value["source_roles"] = [r for r in roles if r in {value["owner"], value["approver"]}]
     return [
@@ -84,6 +104,8 @@ def build_assignment_rows(roles: list[str], pdca: dict[str, str], due_dates: dic
             "owner": value["owner"],
             "approver": value["approver"],
             "due": value["due"],
+            "status": next_steps.get(key, {}).get("status", "SOURCE STATUS UNAVAILABLE"),
+            "action": next_steps.get(key, {}).get("action", "Confirm the next action from the governing source."),
             "source_roles": ", ".join(value["source_roles"]) if value["source_roles"] else "role map",
             "pdca": "monthly/quarterly",
         }
@@ -114,21 +136,6 @@ def render_markdown(rows: list[dict[str, str]]) -> str:
 
 
 def render_next_steps_markdown(rows: list[dict[str, str]]) -> str:
-    status_map = {
-        "D1": "PASS (2026-08-20 cycle)",
-        "D2": "PASS (evidence baselined)",
-        "D3": "PASS (conditional approval recorded)",
-        "D4": "PASS (conditional approval recorded)",
-        "D5": "READY FOR NEXT CYCLE",
-    }
-    action_map = {
-        "D1": "Preserve reconciliation artifacts and carry forward 7-day freshness checks.",
-        "D2": "Refresh identity verification evidence for the next cadence checkpoint.",
-        "D3": "Maintain conditional approval trail and collect implementation evidence if changed.",
-        "D4": "Maintain trust-boundary evidence and rerun dependency verification on change.",
-        "D5": "Set next cadence date, owners, artifacts, and handoff responsibilities.",
-    }
-
     lines = [
         "# Next Steps Template",
         "",
@@ -140,7 +147,7 @@ def render_next_steps_markdown(rows: list[dict[str, str]]) -> str:
     for row in rows:
         key = row["deliverable"]
         lines.append(
-            f"| {key} | {status_map.get(key, 'PENDING')} | {row['owner']} | {row['approver']} | {row['due']} | {action_map.get(key, 'Confirm next action.')} |"
+            f"| {key} | {row['status']} | {row['owner']} | {row['approver']} | {row['due']} | {row['action']} |"
         )
     lines.extend([
         "",
@@ -167,7 +174,7 @@ def render_next_steps_markdown(rows: list[dict[str, str]]) -> str:
         "2. Refresh sample evidence inputs to keep operational freshness at <= 7 days.",
         "3. Re-run audit pack generation for the next high-impact run and store manifest output.",
         "4. Recompute ATP, MTTR, and escalation rate and append results to the next closure report.",
-        "5. Escalate only if ATP enters Sev-1 threshold or if any D1 integrity gate regresses.",
+        "5. Escalate on ATP >= 100, a D1 integrity regression, unauthorized high-impact execution, identity/MFA failure, an out-of-policy anomaly or payout override, a public API contract deviation, or a repeated incident pattern.",
     ])
     return "\n".join(lines) + "\n"
 
@@ -180,7 +187,8 @@ def main() -> None:
     roles = parse_roles(roles_path)
     pdca = parse_pdca(pdca_path)
     due_dates = parse_executive_due_dates(brief_path)
-    rows = build_assignment_rows(roles, pdca, due_dates)
+    next_steps = parse_active_next_steps(brief_path)
+    rows = build_assignment_rows(roles, pdca, due_dates, next_steps)
 
     assignment_output = ROOT / "executive-template-assignment.md"
     assignment_output.write_text(render_markdown(rows), encoding="utf-8")

@@ -9,9 +9,9 @@ Canary run reported by operator as completed at 10:00 PM local time on 2026-08-2
 
 ## Current evidence observed
 - Sample override timestamp in current dataset: 2026-08-21T10:08:00Z
-- Local conversion of that timestamp: 2026-08-21 10:08 AM PDT
+- Local conversion of that timestamp: 2026-08-21 03:08 AM PDT
 - Override reference: OVR-210, approved by Chief AI Governance Officer for a critical patch window.
-- The observed override is 12 hours and 8 minutes after the reported canary completion and does not establish the reported canary start or completion time.
+- The observed override is 5 hours and 8 minutes after the reported canary completion and does not establish the reported canary start or completion time.
 
 ## Reconciliation status
 Pending source-log reconciliation.

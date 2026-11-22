@@ -11,20 +11,20 @@ Daily governance cadence: evidence refresh, audit-pack generation, manifest veri
 - Manifest: governance/audit_pack/out/2026-08-23-daily-cadence/manifest.json
 - Manifest status: PASS
 - Required input sets: 6 present
-- Evidence freshness: 1 day, within the 7-day limit
+- Evidence freshness: approximately 2.29 days, within the 7-day limit
 - D1 monitoring evidence: current window remains complete with no recorded regression
 
 ## Quantitative review
 - Risk model: RPN = impact x likelihood x detectability
 - CPM = 1 + (days_since_last_evidence / 90)
-- With a 1-day age, CPM = 1.0111
+- With a 2.29-day age, CPM = 1.0254
 
 | Risk ID | Capability | RPN | CPM | ATP | Sev-1 trigger (ATP >= 100) |
 | --- | --- | --- | --- | --- | --- |
-| R-001 | infrastructure_deploy | 30 | 1.0111 | 30.33 | No |
-| R-002 | finance_payout | 45 | 1.0111 | 45.50 | No |
-| R-003 | identity_admin | 40 | 1.0111 | 40.44 | No |
-| R-004 | model_assisted_decisions | 48 | 1.0111 | 48.53 | No |
+| R-001 | infrastructure_deploy | 30 | 1.0254 | 30.76 | No |
+| R-002 | finance_payout | 45 | 1.0254 | 46.14 | No |
+| R-003 | identity_admin | 40 | 1.0254 | 41.02 | No |
+| R-004 | model_assisted_decisions | 48 | 1.0254 | 49.22 | No |
 
 ## Operational measures
 - Incident MTTR: 45 minutes

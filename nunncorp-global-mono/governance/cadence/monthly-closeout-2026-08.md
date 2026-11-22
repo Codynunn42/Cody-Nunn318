@@ -70,6 +70,8 @@ Use the same model for consistency.
 Decision rule:
 1. Escalate if any ATP >= 100.
 2. Escalate if D1 integrity gate regresses.
+3. Escalate unauthorized high-impact execution, identity/MFA failure, an out-of-policy anomaly or payout override, a public API contract deviation, or a repeated incident pattern.
+4. Do not close the month while the canary-provenance exception lacks a resolved or formally dispositioned outcome.
 
 Month-end decision:
 - Escalation required: [Yes/No]

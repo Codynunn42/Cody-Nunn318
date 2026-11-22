@@ -71,8 +71,8 @@ Use this model for all daily support triage decisions so escalations are evidenc
 
 ### Severity-to-priority thresholds
 - ATP >= 100: Sev-1 handling, immediate escalation, fail-safe readiness check
-- ATP 70-99: Sev-2 handling, same-day remediation plan and owner assignment
-- ATP 40-69: Sev-3 handling, next-checkpoint remediation and trend watch
+- 70 <= ATP < 100: Sev-2 handling, same-day remediation plan and owner assignment
+- 40 <= ATP < 70: Sev-3 handling, next-checkpoint remediation and trend watch
 - ATP < 40: monitor only, no immediate remediation unless trend worsens
 
 ### Daily support triage worksheet

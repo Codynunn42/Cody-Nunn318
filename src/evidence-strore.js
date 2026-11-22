@@ -20,10 +20,26 @@ function sha256(text) {
     .digest("hex");
 }
 
+function validateRequestId(id) {
+  if (
+    typeof id !== "string" ||
+    id.length === 0 ||
+    id.length > 128 ||
+    !/^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(id)
+  ) {
+    throw new Error("invalid request_id");
+  }
+
+  return id;
+}
+
 function write(record) {
   ensureReady();
 
-  const id = record.request_id || crypto.randomUUID();
+  const id =
+    record.request_id !== undefined && record.request_id !== null
+      ? validateRequestId(record.request_id)
+      : crypto.randomUUID();
 
   const stored = {
     ...record,
@@ -34,7 +50,10 @@ function write(record) {
   const hash = sha256(canonical);
   const file = path.join(evidenceDir, `${id}.json`);
 
-  fs.writeFileSync(file, canonical, "utf8");
+  fs.writeFileSync(file, canonical, {
+    encoding: "utf8",
+    flag: "wx"
+  });
 
   const pointer = {
     request_id: id,

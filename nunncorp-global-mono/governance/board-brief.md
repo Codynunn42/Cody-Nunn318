@@ -109,4 +109,4 @@ This checklist is the minimum board-readiness gate for the current cycle.
 - Approve or defer any remediation steps linked to the current risk review cycle
 
 ## Recommendation
-Proceed with the current operating posture and continue routine monthly control testing and quarterly management review, with escalation only for any material control breach, override, or policy exception.
+Maintain HOLD for runtime release and continue routine monthly control testing and quarterly management review. Escalate ATP >= 100, D1 integrity regression, unauthorized high-impact execution, identity/MFA failure, out-of-policy anomaly or payout override, public API contract deviation, or a repeated incident pattern.

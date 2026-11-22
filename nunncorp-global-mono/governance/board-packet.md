@@ -133,6 +133,7 @@ Maintain **HOLD** on sovereign-runtime acceptance and release. Independent revie
 - retain the rollback path
 - resolve or formally disposition the canary-provenance exception
 - record any future runtime decision through a separate digest-bound approval
+- escalate unauthorized high-impact execution, identity/MFA failure, out-of-policy anomaly or payout override, public API contract deviation, or a repeated incident pattern
 
 ## 8. Final recommendation
 This historical packet is ready for evidence review, not governance sign-off of the live runtime. The code and policy posture does not authorize continued operation, release, deployment, or sovereign-runtime designation. HOLD remains in effect until the required evidence is independently reviewed and the designated authority records a separate decision.

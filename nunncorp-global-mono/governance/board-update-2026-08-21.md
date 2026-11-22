@@ -49,7 +49,7 @@ The previously identified governance bottlenecks from the 2026-08-20 escalation 
 - T+72h checkpoint (D2-D4 transitioned with accountable sign-off): MET
 
 ## Recommendation
-Maintain current runtime operation and shift governance focus to scheduled monthly Check cadence execution, with escalation only if ATP crosses threshold or D1 integrity gate regresses.
+Maintain HOLD for runtime authorization and shift governance focus to scheduled evidence review. Escalate on ATP >= 100, D1 integrity regression, unauthorized high-impact execution, identity/MFA failure, out-of-policy anomaly or payout override, public API contract deviation, or a repeated incident pattern.
 
 ## Authoritative references
 - governance/closure-report-2026-08-20-execution-pass-2.md

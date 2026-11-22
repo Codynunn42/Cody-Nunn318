@@ -4,11 +4,11 @@
 
 | Deliverable | Owner | Approver | Due date | Source |
 | --- | --- | --- | --- | --- |
-| D1 | User / Acting Owner | Executive Desk / Human approval retained | 2026-08-28 | role map |
-| D2 | Security Engineering Lead | Chief AI Governance Officer | 2026-09-05 | Chief AI Governance Officer, Security Engineering Lead |
-| D3 | Sentinel Product Owner | Chief AI Governance Officer | 2026-09-05 | Chief AI Governance Officer, Sentinel Product Owner |
-| D4 | Site Reliability Engineering Lead | Chief AI Governance Officer | 2026-09-05 | Chief AI Governance Officer, Site Reliability Engineering Lead |
-| D5 | Chief AI Governance Officer | Board Risk Committee | 2026-09-18 | Board Risk Committee, Chief AI Governance Officer |
+| D1 | User / Acting Owner | Executive Desk / Human approval retained | To be confirmed | role map |
+| D2 | Security Engineering Lead | Chief AI Governance Officer | To be confirmed | Chief AI Governance Officer, Security Engineering Lead |
+| D3 | Sentinel Product Owner | Chief AI Governance Officer | To be confirmed | Chief AI Governance Officer, Sentinel Product Owner |
+| D4 | Site Reliability Engineering Lead | Chief AI Governance Officer | To be confirmed | Chief AI Governance Officer, Site Reliability Engineering Lead |
+| D5 | Chief AI Governance Officer | Board Risk Committee | To be confirmed | Board Risk Committee, Chief AI Governance Officer |
 
 ## Notes
 

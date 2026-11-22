@@ -4,7 +4,7 @@
 2026-08-21
 
 ## Scope
-Step 5 execution decision: escalate only if ATP enters Sev-1 threshold or D1 integrity gate regresses.
+Step 5 execution decision: escalate on ATP >= 100, D1 integrity regression, unauthorized high-impact execution, identity/MFA failure, an out-of-policy anomaly or payout override, a public API contract deviation, or a repeated incident pattern.
 
 ## Decision
 No escalation triggered for this cycle.
